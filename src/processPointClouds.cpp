@@ -69,7 +69,7 @@ std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT
     seg.segment(*inliers, *coefficients);
 
     if (inliers->indices.empty()) {
-      std::cout << "could not estimate planar model" << std::endl;
+      std::cout << "could not estimate planar model for the given dataset" << std::endl;
     } 
     //end fill
 
