@@ -81,10 +81,38 @@ std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vector<flo
 	// TODO: Fill out this function to return list of indices for each cluster
 
 	std::vector<std::vector<int>> clusters;
+
+	int i=0;
+	while(i < points.size())
+	{
+		if(processed[i])
+		{
+			i++;
+			continue;
+		}
+		std::vector<int> cluster;
+		clusterHelper(i, points, cluster, processed, tree, distanceTol );
+		clusters.push_back(cluster);
+		i++;
+
+	}
  
 	return clusters;
 
 }
+void clusterHelper(int indice, const std::vector<std::vector<float> points,std::vector<std::vector<int>& cluster,
+ KdTree* tree,float distanceTol )
+  {
+	  processed[indice] = true;
+	  cluster.push_back(indice);
+	  std::vector<int> nearest = tree-> search(points[indice], disttanceTol);
+
+	  for(int id :nearest)
+	  {
+		  if(!processed[id])
+		      clusterHelper(id, points, cluster, processed, tree, distanceTol);
+	  }
+  }
 
 int main ()
 {
